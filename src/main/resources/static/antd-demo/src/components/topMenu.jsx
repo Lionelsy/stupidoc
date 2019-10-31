@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Menu, Icon } from "antd";
+import "../css/main.css";
 
 const { SubMenu } = Menu;
 
 class TopMenu extends Component {
   state = {
-    theme: "dark",
+    theme: this.props.theme,
     current: "github"
   };
 
@@ -22,6 +23,7 @@ class TopMenu extends Component {
         selectedKeys={[this.state.current]}
         theme={this.state.theme}
         mode="horizontal"
+        style={{ textAlign: "center" }}
       >
         <Menu.Item key="github">
           <Icon type="github" />

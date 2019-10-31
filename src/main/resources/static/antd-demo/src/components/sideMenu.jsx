@@ -1,10 +1,12 @@
 import { Menu, Icon, Switch } from "antd";
 import React, { Component } from "react";
+import "../css/main.css";
+
 const { SubMenu } = Menu;
 
 class SideMenu extends Component {
   state = {
-    theme: "dark",
+    theme: this.props.theme,
     current: "1"
   };
 
@@ -17,7 +19,7 @@ class SideMenu extends Component {
       <div>
         <Menu
           theme={this.state.theme}
-          style={{ width: 200 }}
+          style={{ width: "100%", height: this.props.height }}
           defaultOpenKeys={["sub1"]}
           selectedKeys={[this.state.current]}
           mode="inline"

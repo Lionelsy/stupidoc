@@ -12,9 +12,9 @@ class EditArea extends Component {
         onChange={this.props.onChange}
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
-        width={800}
-        height={900}
         value={this.props.value}
+        height={this.props.height}
+        width={"100%"}
       ></AceEditor>
     );
   }

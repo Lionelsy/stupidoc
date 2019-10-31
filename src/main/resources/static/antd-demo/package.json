@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/dark-theme": "^1.0.3",
     "antd": "^3.24.3",
     "react": "^16.11.0",
     "react-ace": "^8.0.0",
     "react-dom": "^16.11.0",
     "react-markdown": "^4.2.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-syntax-highlighter": "^11.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

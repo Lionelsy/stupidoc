@@ -44,6 +44,35 @@ class AppSidebar extends React.Component {
           <Icon type="usergroup-delete" />
           Joined
         </Menu.Item>
+        <Menu.Item key="6">
+          <Icon type="usergroup-delete" />
+          Joined
+        </Menu.Item>
+        <Menu.Item key="7">
+          <Icon type="usergroup-delete" />
+          Joined
+        </Menu.Item>
+        <Menu.Item key="8">
+          <Icon type="usergroup-delete" />
+          Joined
+        </Menu.Item>
+
+        {/* <Menu.Item key="9">
+          <Icon type="usergroup-delete" />
+          Joined
+        </Menu.Item>
+        <Menu.Item key="10">
+          <Icon type="usergroup-delete" />
+          Joined
+        </Menu.Item>
+        <Menu.Item key="11">
+          <Icon type="usergroup-delete" />
+          Joined
+        </Menu.Item>
+        <Menu.Item key="12">
+          <Icon type="usergroup-delete" />
+          Joined
+        </Menu.Item> */}
       </Menu>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AppNavbar from "./appNavbar";
 import AppSidebar from "./appSidebar";
 import DocCard from "./docCard";
-import { Layout, Row, Col } from "antd";
+import { Layout, Row, Col, Affix } from "antd";
 import UpLoad from "./upLoadButton";
 import NewBotton from "./newBotton";
 const { Header, Footer, Sider, Content } = Layout;
@@ -40,25 +40,43 @@ class App extends Component {
     }
     return (
       <div>
-        <AppNavbar width={appNavbarWidth} height={appNavbarHeight} />
-        <Row>
-          <Col span={3}>
-            <AppSidebar
-              width={appSidebarWidth}
-              height={appSidebarHeight}
-              documents={documents}
-            />
-          </Col>
-          <Col span={18}>
-            <DocCard documents={documents} />
-          </Col>
-          <div style={{ textAlign: "center" }}>
+        <div style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+          <AppNavbar width={appNavbarWidth} height={appNavbarHeight} />
+        </div>
+        <div>
+          <Row>
             <Col span={3}>
-              <UpLoad width={appButtonWidth} />
-              <NewBotton width={appButtonWidth} />
+              <div
+                style={{
+                  position: "fixed",
+                  zIndex: 1,
+                  marginTop: 50,
+                  overflow: "auto",
+                  width: "12.5%"
+                }}
+              >
+                <AppSidebar
+                  width={appSidebarWidth}
+                  height={appSidebarHeight}
+                  documents={documents}
+                />
+              </div>
             </Col>
-          </div>
-        </Row>
+            <Col span={18}>
+              <div style={{ marginTop: 50 }}>
+                <DocCard documents={documents} />
+              </div>
+            </Col>
+            <div style={{ textAlign: "center" }}>
+              <Col span={3}>
+                <div style={{ position: "fixed", zIndex: 1, marginTop: 50 }}>
+                  <UpLoad width={appButtonWidth} />
+                  <NewBotton width={appButtonWidth} />
+                </div>
+              </Col>
+            </div>
+          </Row>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row, Skeleton, Avatar, Icon } from "antd";
+
+const { Meta } = Card;
 
 class DocCard extends Component {
   state = { documents: this.props.documents };
@@ -8,16 +10,24 @@ class DocCard extends Component {
 
     return (
       <div style={{ background: "#ECECEC", padding: "30px" }}>
-        <Row gutter={18}>
+        <Row>
           {documents.map(doc => (
-            <Col span={8}>
+            <Col span={12}>
               <Card
-                title="Card title"
-                bordered={false}
-                key={doc.id}
-                style={{ margin: "10px" }}
+                style={{ width: 300, marginTop: 0, padding: 0 }}
+                actions={[
+                  <Icon type="setting" key="setting" />,
+                  <Icon type="edit" key="edit" />,
+                  <Icon type="ellipsis" key="ellipsis" />
+                ]}
               >
-                {doc.title}}
+                <Meta
+                  avatar={
+                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  }
+                  title="Card title"
+                  description="This is the description"
+                />
               </Card>
             </Col>
           ))}

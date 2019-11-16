@@ -6,7 +6,7 @@ const { SubMenu } = Menu;
 const { Search } = Input;
 
 const userOptions = (
-  <Menu>
+  <Menu style={{ position: "fixed", top: 0 }}>
     <Menu.Item>
       <a
         target="_blank"

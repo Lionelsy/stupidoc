@@ -5,6 +5,10 @@ import { Menu, Icon } from "antd";
 const { SubMenu } = Menu;
 
 class AppSidebar extends React.Component {
+  state = {
+    documents: this.props.documents
+  };
+
   handleClick = e => {
     console.log("click ", e);
   };

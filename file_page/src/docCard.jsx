@@ -14,7 +14,7 @@ class DocCard extends Component {
           {documents.map(doc => (
             <Col span={12}>
               <Card
-                style={{ width: 300, marginTop: 0, padding: 0 }}
+                style={{ width: "90%", margin: "20px" }}
                 actions={[
                   <Icon type="setting" key="setting" />,
                   <Icon type="edit" key="edit" />,

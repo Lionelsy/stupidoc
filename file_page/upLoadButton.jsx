@@ -25,7 +25,7 @@ class UpLoad extends Component{
         return(
             <div>
                 <Upload {...props}>
-                    <Button>
+                    <Button style={{width:"150px"}}>
                      Click to Upload
                      <Icon type="upload" />
                     </Button>

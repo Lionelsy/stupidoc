@@ -17,8 +17,8 @@ class NewBotton extends Component{
         return(
             <div>
                 <Dropdown overlay={menu}>
-                 <Button>
-                    Creat a file <Icon type="down" />
+                 <Button type="primary" style={{width:"150px"}}>
+                    Create a file <Icon type="down" />
                  </Button>
                 </Dropdown>
             </div>

@@ -23,19 +23,21 @@ class App extends Component {
           height={this.state.appNavbarHeight}
         />
         <Row>
-          <Col span={4}>
+          <Col span={3}>
             <AppSidebar
               width={this.state.appSidebarWidth}
               height={this.state.appSidebarHeight}
             />
           </Col>
-          <Col span={16}>
+          <Col span={18}>
             <DocCard />
           </Col>
-          <Col span={4}>
+          <div style={{textAlign:"center"}}>
+          <Col span={3}>
             <UpLoad />
             <NewBotton />
           </Col>
+          </div>
         </Row>
       </div>
     );

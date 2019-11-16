@@ -6,7 +6,7 @@ class DocCard extends Component {
   render() {
     return (
       <div style={{ background: "#ECECEC", padding: "30px" }}>
-        <Row gutter={16}>
+        <Row gutter={18}>
           <Col span={8}>
             <Card title="Card title" bordered={false}>
               Card content

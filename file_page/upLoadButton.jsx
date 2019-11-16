@@ -26,7 +26,8 @@ class UpLoad extends Component{
             <div>
                 <Upload {...props}>
                     <Button>
-                    <Icon type="upload" /> Click to Upload
+                     Click to Upload
+                     <Icon type="upload" />
                     </Button>
                 </Upload>
             </div>

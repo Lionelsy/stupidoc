@@ -17,7 +17,7 @@ const { TabPane } = Tabs;
 const { Search } = Input;
 const { Text } = Typography;
 
-class SelfInfomation extends Component {
+class SelfInformation extends Component {
   state = {
     firstColSpan: 5,
     secondColSpan: 15,
@@ -172,4 +172,4 @@ class SelfInfomation extends Component {
   }
 }
 
-export default SelfInfomation;
+export default SelfInformation;

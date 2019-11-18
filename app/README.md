@@ -2,3 +2,6 @@
 
 > npm install antd
 > npm install react-router-dom
+> npm install react-ace
+> npm install ace-builds
+> npm install react-markdown

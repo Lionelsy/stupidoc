@@ -5,9 +5,12 @@ import App from "./App";
 import "./css/index.css";
 import "./css/App.css";
 
-import SelfInfomation from "./components/selfInfomation";
+import SelfInfomation from "./components/changeSetting/selfInfomation";
+import DocumentsPage from "./components/documentsPage/documentsPage";
+import EditPage from "./components/editPage/editPage";
+import LoginPage from "./components/login/LoginPage";
 
-ReactDOM.render(<SelfInfomation />, document.getElementById("root"));
+ReactDOM.render(<LoginPage />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -58,21 +58,23 @@ class NormalLoginForm extends Component {
                 href=""
                 style={{ textAlign: "right" }}
               >
-                Forgot password
+                Forget Password
               </a>
             </div>
           </div>
           <br />
-          <div style={{ textAlign: "center" }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Log in
-            </Button>
-          </div>
         </Form.Item>
+        <div style={{ textAlign: "center" }}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            size="large"
+            block
+          >
+            Log in
+          </Button>
+        </div>
       </Form>
     );
   }

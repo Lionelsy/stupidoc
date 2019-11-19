@@ -50,7 +50,7 @@ class SelfInformation extends Component {
         </div>
         <div>
           <Row>
-            <Col span={6} offset={5}>
+            <Col span={6} offset={7}>
               <Breadcrumb style={{ marginTop: 100 }}>
                 <Breadcrumb.Item href="">
                   <Icon type="home" />

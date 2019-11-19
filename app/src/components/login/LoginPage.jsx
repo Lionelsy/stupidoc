@@ -12,24 +12,36 @@ class LoginPage extends Component {
         <Row style={{}}>
           <Col span={8} offset={8}>
             <div style={{ textAlign: "center" }}>
-              <img src={pic} style={{ width: "35%" }}></img>
+              <img src={pic} style={{ width: "20%" }}></img>
             </div>
           </Col>
         </Row>
-        <Row style={{}}>
+        {/* <Row style={{}}>
           <Col span={6} offset={9}>
             <div style={{ textAlign: "center" }}>
               <p style={{ fontSize: "75px" }}>Stupidoc</p>
             </div>
           </Col>
-        </Row>
+        </Row> */}
+        <br />
+        <br />
         <Row style={{}}>
           <Col span={6} offset={9}>
             <Card
+              title={
+                <span style={{ fontSize: "30px" }}>
+                  <Icon
+                    type="check-circle"
+                    theme="twoTone"
+                    twoToneColor="#52c41a"
+                  />
+                  Stupidoc
+                </span>
+              }
+              hoverable="true"
+              bordered="true"
               style={{
-                background: "#f8f8f8",
-                hoverable: "true",
-                bordered: "true"
+                background: "#f8f8f8"
               }}
             >
               <WrappedNormalLoginForm />

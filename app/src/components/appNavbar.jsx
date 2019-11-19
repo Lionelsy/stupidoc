@@ -18,7 +18,7 @@ class AppNavbar extends Component {
         <Menu.Item key="home">
           <a href="/">
             <Icon type="home" />
-            SUSTechDoc
+            Stupidoc
           </a>
         </Menu.Item>
         <SubMenu></SubMenu>

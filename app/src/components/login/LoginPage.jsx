@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Card, Col, Row, Form, Icon, Input, Button, Checkbox } from "antd";
-import ReactDOM from "react-dom";
+import { Card, Col, Row, Icon } from "antd";
 import WrappedNormalLoginForm from "./login";
 import pic from "./img/logo.png";
 class LoginPage extends Component {
@@ -16,13 +15,6 @@ class LoginPage extends Component {
             </div>
           </Col>
         </Row>
-        {/* <Row style={{}}>
-          <Col span={6} offset={9}>
-            <div style={{ textAlign: "center" }}>
-              <p style={{ fontSize: "75px" }}>Stupidoc</p>
-            </div>
-          </Col>
-        </Row> */}
         <br />
         <br />
         <Row style={{}}>

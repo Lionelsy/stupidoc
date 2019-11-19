@@ -70,6 +70,8 @@ class NormalLoginForm extends Component {
             htmlType="submit"
             className="login-form-button"
             size="large"
+            href="/user/3"
+            formMethod="POST"
             block
           >
             Log in

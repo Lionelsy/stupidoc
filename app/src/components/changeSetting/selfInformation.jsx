@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import AppNavbar from "../appNavbar";
 import {
   Tabs,
-  Radio,
   Col,
   Row,
   Icon,

@@ -3,9 +3,14 @@ import LoginPage from "./components/login/LoginPage";
 import EditPage from "./components/editPage/editPage";
 import SelfInformation from "./components/changeSetting/selfInformation";
 import DocumentsPage from "./components/documentsPage/documentsPage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
+  state = {
+    username: "",
+    userId: -1,
+    login: false
+  };
   render() {
     return (
       <Router>

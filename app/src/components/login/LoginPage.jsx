@@ -3,6 +3,14 @@ import { Card, Col, Row, Icon } from "antd";
 import WrappedNormalLoginForm from "./login";
 import pic from "./img/logo.png";
 class LoginPage extends Component {
+  state = {
+    username: "",
+    password: "",
+    remember: false
+  };
+
+  onChange = () => {};
+
   render() {
     return (
       <div>

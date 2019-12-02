@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Card, Form, Icon, Input, Button, Checkbox, notification } from "antd";
-import ReactDOM from "react-dom";
+import { Form, Icon, Input, Button, Checkbox, notification } from "antd";
+import { Redirect } from "react-router-dom";
 
 const openNotificationWithIcon = type => {
   notification[type]({
@@ -10,17 +10,37 @@ const openNotificationWithIcon = type => {
 };
 
 class NormalLoginForm extends Component {
+  state = {
+    username: "",
+    password: "",
+    remember: false,
+    login: false
+  };
+
+  onChange = (username, password, remember) => {
+    this.setState({
+      username: username,
+      password: password,
+      remember: remember
+    });
+    fetch("http://localhost:8080/login" + "/" + username + "/" + password)
+      .then(res => res.json())
+      .then(login => this.setState({ login: login }));
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log("Received values of form: ", values);
-      }
+      this.onChange(values.username, values.password, values.remember);
     });
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { login } = this.state;
+    if (login) {
+      return <Redirect path="/info" />;
+    }
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item style={{ textAlign: "right" }}>
@@ -70,7 +90,7 @@ class NormalLoginForm extends Component {
             htmlType="submit"
             className="login-form-button"
             size="large"
-            href="/user/3"
+            // href="/login"
             formMethod="POST"
             block
           >

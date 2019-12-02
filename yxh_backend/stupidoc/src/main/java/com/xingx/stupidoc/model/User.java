@@ -15,7 +15,6 @@ import javax.persistence.Table;
 @Data
 @Table(name = "user")
 public class User {
-
     @Id
     @GeneratedValue
     private Integer id;

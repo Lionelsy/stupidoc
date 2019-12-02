@@ -6,9 +6,9 @@ const menu = (
   <Menu>
     <Menu.Item key="0">
       <a
-        target="_blank"
+        // target="_blank"
         rel="noopener noreferrer"
-        href="http://www.alipay.com/"
+        href="http://127.0.0.1:3000/info"
       >
         Personal Infomation
       </a>
@@ -16,9 +16,9 @@ const menu = (
     <Menu.Divider />
     <Menu.Item key="1" disabled>
       <a
-        target="_blank"
+        // target="_blank"
         rel="noopener noreferrer"
-        href="http://www.taobao.com/"
+        href="http://127.0.0.1:3000/info"
       >
         Change password
       </a>

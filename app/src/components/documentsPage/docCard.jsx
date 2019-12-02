@@ -1,11 +1,41 @@
 import React, { Component } from "react";
-import { Card, Col, Row, Avatar, Icon, Typography } from "antd";
-
+import {
+  Card,
+  Col,
+  Row,
+  Avatar,
+  Icon,
+  Typography,
+  Input,
+  Select,
+  Menu,
+  Dropdown,
+  Drawer,
+  Affix
+} from "antd";
+import Button from "./button";
+const { Option } = Select;
 const { Meta } = Card;
 const { Text } = Typography;
 
 class DocCard extends Component {
-  state = { documents: this.props.documents };
+  state = {
+    documents: this.props.documents,
+    visible: false,
+    appButtonWidth: "150px"
+  };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false
+    });
+  };
 
   formatDate = date => {
     var monthNames = [
@@ -52,46 +82,73 @@ class DocCard extends Component {
       const sorted_documents = this.sort_by_date(documents);
       console.log(sorted_documents);
       return (
-        <div style={{ background: "#f7f7f7", padding: "30px" }}>
-          <Row>
-            {sorted_documents.map(e => (
-              <div key={e[0].id}>
-                <div>
-                  <Text disabled>
-                    {this.formatDate(new Date(e[0].createTime))}
-                  </Text>
+        <div style={{ background: "#ffffff", padding: "30px" }}>
+          <Col span={21}>
+            <Row>
+              {sorted_documents.map(e => (
+                <div key={e[0].id}>
+                  <div>
+                    <Text disabled>
+                      {this.formatDate(new Date(e[0].createTime))}
+                    </Text>
+                  </div>
+                  <Row>
+                    {e.map(doc => (
+                      <Col span={8} key={doc.id}>
+                        <Card
+                          style={{
+                            width: "97%",
+                            marginLeft: "5px",
+                            marginRight: "5px",
+                            marginTop: "10px",
+                            marginBottom: "10px"
+                          }}
+                          actions={[
+                            <Icon type="edit" key="edit" />,
+                            <Icon
+                              type="ellipsis"
+                              key="ellipsis"
+                              onClick={this.showDrawer}
+                            />
+                          ]}
+                        >
+                          <Meta
+                            avatar={
+                              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                            }
+                            title="Card title"
+                            // description="This is the description"
+                          />
+                          <div style={{ marginTop: 12 }}>
+                            <Input
+                              style={{ border: 0 }}
+                              defaultValue="This is the description"
+                            />
+                          </div>
+                        </Card>
+                        <Drawer
+                          title="Basic Drawer"
+                          placement="right"
+                          closable={false}
+                          onClose={this.onClose}
+                          visible={this.state.visible}
+                          // mask={false}
+                          // maskClosable={false}
+                        >
+                          <p>Some contents...</p>
+                          <p>Some contents...</p>
+                          <p>Some contents...</p>
+                        </Drawer>
+                      </Col>
+                    ))}
+                  </Row>
                 </div>
-                <Row>
-                  {e.map(doc => (
-                    <Col span={8} key={doc.id}>
-                      <Card
-                        style={{
-                          width: "97%",
-                          marginLeft: "5px",
-                          marginRight: "5px",
-                          marginTop: "10px",
-                          marginBottom: "10px"
-                        }}
-                        actions={[
-                          <Icon type="setting" key="setting" />,
-                          <Icon type="edit" key="edit" />,
-                          <Icon type="ellipsis" key="ellipsis" />
-                        ]}
-                      >
-                        <Meta
-                          avatar={
-                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                          }
-                          title="Card title"
-                          description="This is the description"
-                        />
-                      </Card>
-                    </Col>
-                  ))}
-                </Row>
-              </div>
-            ))}
-          </Row>
+              ))}
+            </Row>
+          </Col>
+          <Col span={3}>
+            <Button />
+          </Col>
         </div>
       );
     }

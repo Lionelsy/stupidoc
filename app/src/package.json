@@ -6,8 +6,12 @@
   "dependencies": {
     "antd": "^3.0.0",
     "moment": "^2.19.3",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-draggable": "^3.0.5",
+    "react-resizable": "^1.7.5",
+    "react-rnd": "^8.0.2",
+    "react-scripts": "1.1.4"
   },
   "devDependencies": {
     "atool-build": "^0.9.0",
@@ -31,9 +35,9 @@
     "lint"
   ],
   "scripts": {
-    "build": "atool-build",
-    "lint": "eslint --ext .js,.jsx src/",
-    "start": "dora --plugins webpack",
-    "test": "atool-test-mocha ./**/__tests__/*-test.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }

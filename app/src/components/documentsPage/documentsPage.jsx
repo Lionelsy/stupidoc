@@ -1,4 +1,4 @@
-import AppNavbar from "../appNavbar";
+import AppNavbar from "../common/appNavbar";
 import AppContent from "./appContent";
 
 import React, { Component } from "react";

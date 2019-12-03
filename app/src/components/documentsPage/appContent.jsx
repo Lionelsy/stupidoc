@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AppSidebar from "./appSidebar";
 import DocCard from "./docCard";
-import { Row, Col, Affix } from "antd";
+import { Row, Col } from "antd";
 
 class AppContent extends Component {
   state = {

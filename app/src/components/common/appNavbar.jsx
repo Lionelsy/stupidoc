@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Menu, Icon, Input } from "antd";
 import { MenuItem } from "rc-menu";
-import UserOption from "./documentsPage/userOption";
+import UserOption from "./userOption";
 
 const { SubMenu } = Menu;
 const { Search } = Input;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Card, Col, Row, Avatar, Icon, Typography, Input } from "antd";
+import { Card, Col, Row, Avatar, Icon, Typography, Input, Drawer } from "antd";
 import EditCard from "./editCard";
+import AllButton from "./button";
 const { Meta } = Card;
 const { Text } = Typography;
 
@@ -9,7 +10,8 @@ class DocCard extends Component {
     documents: this.props.documents,
     appButtonWidth: "150px",
     selectedDocumentId: 4,
-    selectedDoc: this.props.documents[0]
+    selectedDoc: this.props.documents[0],
+    visible: false
   };
 
   formatDate = date => {
@@ -31,7 +33,6 @@ class DocCard extends Component {
     var day = date.getDate();
     var monthIndex = date.getMonth();
     var year = date.getFullYear();
-
     return day + " " + monthNames[monthIndex] + " " + year;
   };
 
@@ -47,6 +48,12 @@ class DocCard extends Component {
       }
     }
     return result;
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false
+    });
   };
 
   render() {
@@ -83,6 +90,7 @@ class DocCard extends Component {
                               key="ellipsis"
                               onClick={() => {
                                 this.setState({
+                                  visible: true,
                                   selectedDocumentId: doc.id,
                                   selectedDoc: doc
                                 });
@@ -113,11 +121,19 @@ class DocCard extends Component {
           </Col>
           <Col span={4}>
             {/* <AllButton /> */}
+            <AllButton />
+          </Col>
+          <Drawer
+            placement="right"
+            closable={false}
+            onClose={this.onClose}
+            visible={this.state.visible}
+          >
             <EditCard
               docid={this.state.selectedDocumentId}
               doc={this.state.selectedDoc}
             />
-          </Col>
+          </Drawer>
         </div>
       );
     }

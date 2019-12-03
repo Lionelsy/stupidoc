@@ -3,7 +3,7 @@ import { Input, Select, Icon, Button, Tag } from "antd";
 
 class EditCard extends Component {
   state = {
-    backgroundColor: "#eee",
+    backgroundColor: "#ffffff",
     docid: this.props.docid,
     doc: this.props.doc
   };
@@ -12,15 +12,9 @@ class EditCard extends Component {
       <div
         key={this.props.docid}
         style={{
-          background: this.state.backgroundColor,
-          width: "16.67%",
-          height: "600px",
-          position: "fixed",
-          top: 47,
-          right: 0
+          background: this.state.backgroundColor
         }}
       >
-        {/* //title */}
         <div>
           <Input
             style={{ marginTop: 30, background: this.state.backgroundColor }}

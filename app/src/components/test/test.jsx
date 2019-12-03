@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import AppNavbar from "../common/appNavbar";
 import TestSide from "./testSide";
+import TestNavbar from "./testNavbar";
 class Test extends Component {
   state = {
     collapsed: false,
@@ -36,8 +36,8 @@ class Test extends Component {
 
     return (
       <div>
-        <AppNavbar />
-        <div style={{ position: "relative", width: "100%", height: "800px" }}>
+        <TestNavbar />
+        {/* <div style={{ position: "relative", width: "100%", height: "800px" }}>
           <TestSide
             collapsed={this.state.collapsed}
             toggleCollapsed={this.toggleCollapsed}
@@ -90,7 +90,7 @@ class Test extends Component {
           }}
         >
           <h1>Footer</h1>
-        </div>
+        </div> */}
       </div>
     );
   }

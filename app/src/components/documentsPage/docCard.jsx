@@ -1,40 +1,15 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Col,
-  Row,
-  Avatar,
-  Icon,
-  Typography,
-  Input,
-  Select,
-  Menu,
-  Dropdown,
-  Drawer,
-  Affix
-} from "antd";
-import Button from "./button";
-const { Option } = Select;
+import { Card, Col, Row, Avatar, Icon, Typography, Input } from "antd";
+import EditCard from "./editCard";
 const { Meta } = Card;
 const { Text } = Typography;
 
 class DocCard extends Component {
   state = {
     documents: this.props.documents,
-    visible: false,
-    appButtonWidth: "150px"
-  };
-
-  showDrawer = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false
-    });
+    appButtonWidth: "150px",
+    selectedDocumentId: 4,
+    selectedDoc: this.props.documents[0]
   };
 
   formatDate = date => {
@@ -65,7 +40,6 @@ class DocCard extends Component {
     for (let i = 0; i < documents.length; i++) {
       let doc = documents[i];
       let t = new Date(doc.createTime).getDay();
-      console.log(t);
       if (!result[t]) {
         result[t] = [doc];
       } else {
@@ -80,10 +54,9 @@ class DocCard extends Component {
     const { documents } = this.state;
     if (selected === "1") {
       const sorted_documents = this.sort_by_date(documents);
-      console.log(sorted_documents);
       return (
-        <div style={{ background: "#ffffff", padding: "30px" }}>
-          <Col span={21}>
+        <div style={{ background: "#ffffff", position: "relative" }}>
+          <Col span={20}>
             <Row>
               {sorted_documents.map(e => (
                 <div key={e[0].id}>
@@ -108,7 +81,12 @@ class DocCard extends Component {
                             <Icon
                               type="ellipsis"
                               key="ellipsis"
-                              onClick={this.showDrawer}
+                              onClick={() => {
+                                this.setState({
+                                  selectedDocumentId: doc.id,
+                                  selectedDoc: doc
+                                });
+                              }}
                             />
                           ]}
                         >
@@ -126,19 +104,6 @@ class DocCard extends Component {
                             />
                           </div>
                         </Card>
-                        <Drawer
-                          title="Basic Drawer"
-                          placement="right"
-                          closable={false}
-                          onClose={this.onClose}
-                          visible={this.state.visible}
-                          // mask={false}
-                          // maskClosable={false}
-                        >
-                          <p>Some contents...</p>
-                          <p>Some contents...</p>
-                          <p>Some contents...</p>
-                        </Drawer>
                       </Col>
                     ))}
                   </Row>
@@ -146,8 +111,12 @@ class DocCard extends Component {
               ))}
             </Row>
           </Col>
-          <Col span={3}>
-            <Button />
+          <Col span={4}>
+            {/* <AllButton /> */}
+            <EditCard
+              docid={this.state.selectedDocumentId}
+              doc={this.state.selectedDoc}
+            />
           </Col>
         </div>
       );

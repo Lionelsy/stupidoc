@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Menu, Icon } from "antd";
+import { Button, Menu, Icon, Row, Col } from "antd";
 
 const { SubMenu } = Menu;
 
@@ -8,21 +8,20 @@ class TestSide extends Component {
     return (
       <div
         style={{
-          width: this.props.collapsed ? "80px" : "256px",
-          background: "#789",
-          height: "800px",
-          position: "absolute",
+          width: "100%",
+          height: this.props.height,
           top: 0,
           left: 0
         }}
       >
-        <Button
-          type="primary"
-          onClick={this.props.toggleCollapsed}
-          style={{ marginBottom: 16 }}
-        >
-          <Icon type={this.props.collapsed ? "menu-unfold" : "menu-fold"} />
-        </Button>
+        <div>
+          <div style={{ float: "left", width: "50%" }}>
+            <Button block />
+          </div>
+          <div style={{ float: "right", width: "50%" }}>
+            <Button block />
+          </div>
+        </div>
         <Menu
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}

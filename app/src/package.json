@@ -35,9 +35,9 @@
     "lint"
   ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "build": "atool-build",
+    "lint": "eslint --ext .js,.jsx src/",
+    "start": "dora --plugins webpack",
+    "test": "atool-test-mocha ./**/__tests__/*-test.js"
   }
 }

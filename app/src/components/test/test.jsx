@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import TestSide from "./testSide";
 import TestNavbar from "./testNavbar";
+import { Row, Col } from "antd";
+import TestContent from "./testContent";
 class Test extends Component {
   state = {
     collapsed: false,
@@ -37,60 +39,14 @@ class Test extends Component {
     return (
       <div>
         <TestNavbar />
-        {/* <div style={{ position: "relative", width: "100%", height: "800px" }}>
-          <TestSide
-            collapsed={this.state.collapsed}
-            toggleCollapsed={this.toggleCollapsed}
-          />
-          <div
-            id="edit"
-            style={{
-              margin: this.state.collapsed ? "0 40% 0 80px" : "0 40% 0 256px",
-              background: "#ccc",
-              height: "800px"
-            }}
-          >
-            <h1>middle</h1>
-          </div>
-          <label
-            onMouseDown={this.onMouseDown}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "59.3%",
-              background: "#bd3f13",
-              cursor: "e-resize",
-              width: "0.7%",
-              height: height
-            }}
-          ></label>
-          <div
-            id="show"
-            style={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              background: "#090",
-              width: "40%",
-              height: height
-            }}
-          >
-            <h1>right</h1>
-          </div>
-        </div>
-        <div
-          style={{
-            background: "#ddd",
-            height: "200px",
-            width: "100",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            flexDirection: "column"
-          }}
-        >
-          <h1>Footer</h1>
-        </div> */}
+        <Row>
+          <Col span={4} style={{ background: "#900", height: "500px" }}>
+            <TestSide />
+          </Col>
+          <Col span={20} style={{ background: "#090", height: "500px" }}>
+            <TestContent />
+          </Col>
+        </Row>
       </div>
     );
   }

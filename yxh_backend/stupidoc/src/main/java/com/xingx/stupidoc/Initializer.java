@@ -271,51 +271,51 @@ public class Initializer implements CommandLineRunner {
 //                "*here be dragons*\n" +
 //                ":::\n";
 //
-//        String text2 = "# Live demo\n" +
-//                "\n" +
-//                "Changes are automatically rendered as you type.\n" +
-//                "\n" +
-//                "## Table of Contents\n" +
-//                "\n" +
-//                "* Implements [GitHub Flavored Markdown](https://github.github.com/gfm/)\n" +
-//                "\n" +
-//                "* Allows you to escape or skip HTML (try toggling the checkboxes above)\n" +
-//                "* If you escape or skip the HTML, no `dangerouslySetInnerHTML` is used! Yay!\n" +
-//                "\n" +
-//                "## HTML block below\n" +
-//                "\n" +
-//                "<blockquote>\n" +
-//                "  This blockquote will change based on the HTML settings above.\n" +
-//                "</blockquote>\n" +
-//                "\n" +
-//                "## How about some code?\n" +
-//                "```js\n" +
-//                "var React = require('react');\n" +
-//                "var Markdown = require('react-markdown');\n" +
-//                "\n" +
-//                "React.render(\n" +
-//                "  <Markdown source='# Your markdown here' />,\n" +
-//                "  document.getElementById('content')\n" +
-//                ");\n" +
-//                "```\n" +
-//                "\n" +
-//                "Pretty neat, eh?\n" +
-//                "\n" +
-//                "## Tables?\n" +
-//                "\n" +
-//                "| Feature   | Support |\n" +
-//                "| --------- | ------- |\n" +
-//                "| tables    | ✔ |\n" +
-//                "| alignment | ✔ |\n" +
-//                "| wewt      | ✔ |\n" +
-//                "\n" +
-//                "## More info?\n" +
-//                "\n" +
-//                "Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)\n" +
-//                "\n" +
-//                "---------------\n" +
-//                "\n" +
-//                "A component by [Espen Hovlandsdal](https://espen.codes/)";
+        String text2 = "# Live demo\n" +
+                "\n" +
+                "Changes are automatically rendered as you type.\n" +
+                "\n" +
+                "## Table of Contents\n" +
+                "\n" +
+                "* Implements [GitHub Flavored Markdown](https://github.github.com/gfm/)\n" +
+                "\n" +
+                "* Allows you to escape or skip HTML (try toggling the checkboxes above)\n" +
+                "* If you escape or skip the HTML, no `dangerouslySetInnerHTML` is used! Yay!\n" +
+                "\n" +
+                "## HTML block below\n" +
+                "\n" +
+                "<blockquote>\n" +
+                "  This blockquote will change based on the HTML settings above.\n" +
+                "</blockquote>\n" +
+                "\n" +
+                "## How about some code?\n" +
+                "```js\n" +
+                "var React = require('react');\n" +
+                "var Markdown = require('react-markdown');\n" +
+                "\n" +
+                "React.render(\n" +
+                "  <Markdown source='# Your markdown here' />,\n" +
+                "  document.getElementById('content')\n" +
+                ");\n" +
+                "```\n" +
+                "\n" +
+                "Pretty neat, eh?\n" +
+                "\n" +
+                "## Tables?\n" +
+                "\n" +
+                "| Feature   | Support |\n" +
+                "| --------- | ------- |\n" +
+                "| tables    | ✔ |\n" +
+                "| alignment | ✔ |\n" +
+                "| wewt      | ✔ |\n" +
+                "\n" +
+                "## More info?\n" +
+                "\n" +
+                "Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)\n" +
+                "\n" +
+                "---------------\n" +
+                "\n" +
+                "A component by [Espen Hovlandsdal](https://espen.codes/)";
 //
 //        Document[] documents = new Document[docNum];
 //        for (int i = 0; i < docNum; i++) {

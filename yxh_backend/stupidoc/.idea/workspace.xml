@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b9605e-b9eb-44e1-bf9f-a42393aaf321" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../app/src/components/documentsPage/appContent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/src/components/documentsPage/appContent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../app/src/components/documentsPage/editCard.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../app/src/components/editPage/testDrag.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../app/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/src/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/src/components/test/test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/src/components/test/test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/src/components/test/testContent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/src/components/test/testContent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../app/src/components/test/testNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../app/src/components/test/testNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xingx/stupidoc/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xingx/stupidoc/Initializer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,6 +147,7 @@
       <workItem from="1575296025254" duration="65000" />
       <workItem from="1575296105966" duration="5059000" />
       <workItem from="1575352059612" duration="7000" />
+      <workItem from="1575452341155" duration="114000" />
     </task>
     <servers />
   </component>

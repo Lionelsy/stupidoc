@@ -1,0 +1,17 @@
+
+Project/Stupidoc.pdf
+
+app/node_modules/
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+
+app/npm-debug.log*
+app/yarn-debug.log*
+app/yarn-error.log*

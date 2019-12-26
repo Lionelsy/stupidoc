@@ -16,6 +16,21 @@ import { Link } from "react-router-dom";
 const { Meta } = Card;
 const { Text } = Typography;
 
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
 class DocCard extends Component {
   state = {
     documents: this.props.documents,
@@ -30,21 +45,6 @@ class DocCard extends Component {
   };
 
   formatDate = date => {
-    var monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-
     var day = date.getDate();
     var monthIndex = date.getMonth();
     var year = date.getFullYear();
@@ -55,14 +55,15 @@ class DocCard extends Component {
     let result = [];
     for (let i = 0; i < documents.length; i++) {
       let doc = documents[i];
-      let t = new Date(doc.create_time).getDay();
+      let date = new Date(doc.last_modified);
+      let t = date.getFullYear() + date.getMonth() + date.getDay();
       if (!result[t]) {
         result[t] = [doc];
       } else {
         result[t].push(doc);
       }
     }
-    return result;
+    return result.reverse();
   };
 
   sort_by_authority = (documents, authority) => {
@@ -100,7 +101,7 @@ class DocCard extends Component {
         document_title: newTitle.state.value,
         document_type: 1,
         description: newDesc.state.value,
-        create_time: Date.parse(new Date())
+        create_time: new Date().getTime()
       }
     };
     fetch("/document/addNewDocument", {
@@ -156,7 +157,7 @@ class DocCard extends Component {
               <div key={e[0].document_id}>
                 <div>
                   <Text disabled>
-                    {this.formatDate(new Date(e[0].create_time))}
+                    {this.formatDate(new Date(e[0].last_modified))}
                   </Text>
                 </div>
                 <Row>

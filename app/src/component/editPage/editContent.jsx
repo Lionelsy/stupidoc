@@ -93,7 +93,7 @@ class EditContent extends Component {
             right: "50%",
             width: "1%",
             height: "100%",
-            background: "#aa0",
+            background: "#e7e7e7",
             cursor: "e-resize"
           }}
           onMouseDown={this.onMouseDown}

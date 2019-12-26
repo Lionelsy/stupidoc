@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Menu, Icon, Row, Col } from "antd";
+import UpLoad from "../documentsPage/upLoadButton";
 
 const { SubMenu } = Menu;
 
@@ -18,7 +19,6 @@ class EditSide extends Component {
     }
   };
   render() {
-    console.log(this.props.value);
     const { value } = this.props;
     return (
       <div
@@ -29,10 +29,13 @@ class EditSide extends Component {
           left: 0
         }}
       >
-        <div>
-          <div>
-            <Button block>Upload a file</Button>
-          </div>
+        <div style={{ textAlign: "center", margin: 5 }}>
+          <UpLoad width="200px">
+            <Button size="large">
+              <Icon type="upload" />
+              upload
+            </Button>
+          </UpLoad>
         </div>
         <Menu
           defaultSelectedKeys={["1"]}

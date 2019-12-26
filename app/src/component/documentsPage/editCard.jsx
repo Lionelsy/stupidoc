@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Input, Select, Icon, Button, Tag } from "antd";
+import { Input, Select, Icon, Button, Tag, message } from "antd";
+import copy from "copy-to-clipboard";
 
 class EditCard extends Component {
   state = {
@@ -7,6 +8,30 @@ class EditCard extends Component {
     docid: this.props.docid,
     doc: this.props.doc,
     showLoading: false
+  };
+
+  handleInviteRead = () => {
+    message.success("Copy the invited link successfully");
+    fetch(
+      "/document/read/generateShareLink?document_id=" +
+        this.props.docid +
+        "&cooperator_id=" +
+        "12345"
+    )
+      .then(res => res.json())
+      .then(data => copy(data.data.readShareLink));
+  };
+
+  handleInviteWrite = () => {
+    message.success("Copy the invited link successfully");
+    fetch(
+      "/document/read/generateShareLink?document_id=" +
+        this.props.docid +
+        "&cooperator_id=" +
+        "12345"
+    )
+      .then(res => res.json())
+      .then(data => copy(data.data.writeShareLink));
   };
 
   handleDelete = () => {
@@ -75,8 +100,21 @@ class EditCard extends Component {
           </Tag>
         </div>
         <div style={{ textAlign: "center", marginTop: 30 }}>
-          <Button type="ghost" style={{ width: "100%" }}>
-            Invite
+          <Button
+            type="ghost"
+            style={{ width: "100%" }}
+            onClick={this.handleInviteRead}
+          >
+            Invite (Read only)
+          </Button>
+        </div>
+        <div style={{ textAlign: "center", marginTop: 20 }}>
+          <Button
+            type="ghost"
+            style={{ width: "100%" }}
+            onClick={this.handleInviteWrite}
+          >
+            Invite (Read Write)
           </Button>
         </div>
         <div style={{ textAlign: "center", marginTop: 20 }}>

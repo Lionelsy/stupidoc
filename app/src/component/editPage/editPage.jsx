@@ -114,7 +114,14 @@ class EditPage extends Component {
   };
 
   render() {
-    const { height, visibleVersion, visibleToolbox, versions } = this.state;
+    const {
+      height,
+      visibleVersion,
+      visibleToolbox,
+      versions,
+      objects,
+      value
+    } = this.state;
     return (
       <div>
         <Drawer
@@ -210,11 +217,11 @@ class EditPage extends Component {
         />
         <Row>
           <Col span={4} style={{ background: "#ffffff", height: height }}>
-            <EditSide value={this.state.objects} />
+            <EditSide value={objects} />
           </Col>
           <Col span={20} style={{ background: "#090", height: height }}>
             <EditContent
-              value={this.state.value}
+              value={value}
               onValueChange={this.onValueChange}
               height={height}
             />

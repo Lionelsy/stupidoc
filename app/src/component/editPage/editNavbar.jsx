@@ -4,7 +4,6 @@ class EditNavbar extends Component {
   state = {};
 
   render() {
-    const width = window.innerWidth;
     return (
       <div
         style={{

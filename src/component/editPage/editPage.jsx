@@ -13,6 +13,7 @@ import {
   Modal
 } from "antd";
 import EditContent from "./editContent";
+import { Redirect } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -182,7 +183,9 @@ class EditPage extends Component {
     } = this.state;
 
     console.log(this.props.userId);
-
+    if (this.props.userId === -1) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div>
         <Modal

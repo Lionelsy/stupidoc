@@ -187,7 +187,18 @@ class DocCard extends Component {
                           />
                         ]}
                       >
-                        <Meta title={doc.document_title} />
+                        <Icon
+                          style={{ float: "left", marginRight: 5 }}
+                          type={
+                            doc.document_type === 0
+                              ? "file-markdown"
+                              : "file-text"
+                          }
+                        />
+                        <Meta
+                          title={doc.document_title}
+                          style={{ float: "left" }}
+                        />
                         <div style={{ marginTop: 12 }}>
                           <Input
                             style={{ border: 0 }}

@@ -1,12 +1,28 @@
 import React, { Component } from "react";
-import { Button, Menu, Icon, Row, Col } from "antd";
-import UpLoad from "../documentsPage/upLoadButton";
-
-const { SubMenu } = Menu;
+import { Button, Menu, Icon, message, Upload } from "antd";
 
 class EditSide extends Component {
   state = {
     objs: this.props.value
+  };
+
+  uploadProps = {
+    name: "file",
+    action: "/document/addObject",
+    headers: {
+      authorization: "authorization-text"
+    },
+    width: "200px",
+    onChange(info) {
+      if (info.file.status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === "done") {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    }
   };
 
   SelectIcon = e => {
@@ -30,12 +46,12 @@ class EditSide extends Component {
         }}
       >
         <div style={{ textAlign: "center", margin: 5 }}>
-          <UpLoad width="200px">
-            <Button size="large">
+          <Upload showUploadList={false}>
+            <Button type="ghost" style={{ width: 200 }}>
               <Icon type="upload" />
               upload
             </Button>
-          </UpLoad>
+          </Upload>
         </div>
         <Menu
           defaultSelectedKeys={["1"]}

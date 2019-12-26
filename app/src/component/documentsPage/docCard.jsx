@@ -1,15 +1,5 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Col,
-  Row,
-  Avatar,
-  Icon,
-  Typography,
-  Input,
-  Drawer,
-  Modal
-} from "antd";
+import { Card, Col, Row, Icon, Typography, Input, Drawer, Modal } from "antd";
 import EditCard from "./editCard";
 import AllButton from "./button";
 import { Link } from "react-router-dom";

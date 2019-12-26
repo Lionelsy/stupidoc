@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Menu, Icon, Input } from "antd";
+import { Menu, Icon } from "antd";
 import { MenuItem } from "rc-menu";
 import UserOption from "./userOption";
 
 const { SubMenu } = Menu;
-const { Search } = Input;
 
 class AppNavbar extends Component {
   state = { menuItemWitdh: "150" };

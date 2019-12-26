@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Select, Icon, Button, Tag, message } from "antd";
+import { Input, Icon, Button, Tag, message } from "antd";
 import copy from "copy-to-clipboard";
 
 class EditCard extends Component {

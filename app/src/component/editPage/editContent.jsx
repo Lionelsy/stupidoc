@@ -12,7 +12,6 @@ class EditContent extends Component {
     var target = e.target;
     var edit = document.getElementById("edit");
     var show = document.getElementById("show");
-    var viewer = document.getElementById("pdf-viewer");
     var maxWidth = window.innerWidth;
     var sideWidth = maxWidth * 0.1667;
     var dragWidth = maxWidth * 0.006;
@@ -122,6 +121,7 @@ class EditContent extends Component {
             <div></div>
           ) : (
             <iframe
+              title="showPanel"
               id="pdf-viewer"
               style={{
                 width: "100%",

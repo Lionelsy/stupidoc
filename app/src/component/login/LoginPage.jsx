@@ -29,7 +29,11 @@ class LoginPage extends Component {
           <Row style={{}}>
             <Col span={8} offset={8}>
               <div style={{ textAlign: "center" }}>
-                <img src={pic} style={{ width: "20%" }}></img>
+                <img
+                  src={pic}
+                  style={{ width: "20%" }}
+                  alt="Southern University of Science and Technology"
+                ></img>
               </div>
             </Col>
           </Row>

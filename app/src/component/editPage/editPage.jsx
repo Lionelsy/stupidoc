@@ -76,7 +76,6 @@ class EditPage extends Component {
     var new_versions = [...this.state.versions];
     new_versions = new_versions.filter(v => v.version_id !== e);
     this.setState({ versions: new_versions });
-    console.log(this.state.versions);
   };
 
   async componentDidMount() {
@@ -101,16 +100,13 @@ class EditPage extends Component {
       visibleVersion: true
     });
     const doc_id = this.state.doc_id;
-    const res = fetch(
-      `/document/getVersionsDescription?document_id=` + parseInt(doc_id)
-    )
+    fetch(`/document/getVersionsDescription?document_id=` + parseInt(doc_id))
       .then(res => res.json())
       .then(data => {
         this.setState({
           versions: data.data
         });
       });
-    console.log(this.state.versions);
   };
 
   render() {

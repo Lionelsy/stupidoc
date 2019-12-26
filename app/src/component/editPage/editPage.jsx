@@ -21,7 +21,10 @@ class EditPage extends Component {
     value: "<h1>Hello World</h1>",
     visibleVersion: false,
     visibleToolbox: false,
-    version: ["2019-1-1", "2019-7-9", "2019-10-9"]
+    version: ["2019-1-1", "2019-7-9", "2019-10-9"],
+    versions: [],
+    objects: [],
+    doc_id: 20
   };
 
   toggleCollapsed = () => {
@@ -81,6 +84,23 @@ class EditPage extends Component {
     new_version = new_version.filter(v => v != e);
     this.setState({ version: new_version });
   };
+
+  async componentDidMount() {
+    var pro = 0;
+    const res = await fetch(
+      `/document/getRecentVersionInfo?document_id=` +
+        parseInt(this.state.doc_id)
+    );
+    const body1 = await res.json();
+    pro = body1.data.version_id;
+    const response = await fetch(
+      `/document/getObjectsDescription?version_id=` + parseInt(pro)
+    );
+    const body = await response.json();
+    this.setState({
+      objects: body.data
+    });
+  }
 
   render() {
     const { height, visibleVersion, visibleToolbox, version } = this.state;
@@ -179,7 +199,7 @@ class EditPage extends Component {
         />
         <Row>
           <Col span={4} style={{ background: "#900", height: height }}>
-            <EditSide />
+            <EditSide value={this.state.objects} />
           </Col>
           <Col span={20} style={{ background: "#090", height: height }}>
             <EditContent

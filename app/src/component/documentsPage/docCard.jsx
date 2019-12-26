@@ -193,9 +193,6 @@ class DocCard extends Component {
                         ]}
                       >
                         <Meta
-                          avatar={
-                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                          }
                           title={doc.document_title}
                           // description="This is the description"
                         />

@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import EditSide from "./editSide";
 import EditNavbar from "./editNavbar";
-import { Row, Col, Drawer, Timeline, Button, Divider, Select } from "antd";
+import {
+  Row,
+  Col,
+  Drawer,
+  Timeline,
+  Button,
+  Divider,
+  Select,
+  Icon
+} from "antd";
 import EditContent from "./editContent";
 
 const { Option } = Select;
@@ -11,7 +20,8 @@ class EditPage extends Component {
     height: "500px",
     value: "<h1>Hello World</h1>",
     visibleVersion: false,
-    visibleToolbox: false
+    visibleToolbox: false,
+    version: ["2019-1-1", "2019-7-9", "2019-10-9"]
   };
 
   toggleCollapsed = () => {
@@ -47,15 +57,33 @@ class EditPage extends Component {
       visibleVersion: false
     });
   };
+
   onCloseToolbox = () => {
     this.setState({
       visibleToolbox: false
     });
   };
 
+  handleVersionVisible = () => {
+    this.setState({
+      visibleVersion: true
+    });
+  };
+
+  handleToolsVisible = () => {
+    this.setState({
+      visibleToolbox: true
+    });
+  };
+
+  handleClick = e => {
+    var new_version = [...this.state.version];
+    new_version = new_version.filter(v => v != e);
+    this.setState({ version: new_version });
+  };
+
   render() {
-    const { height } = this.state;
-    console.log(this.props.document_id);
+    const { height, visibleVersion, visibleToolbox, version } = this.state;
     return (
       <div>
         <Drawer
@@ -63,19 +91,27 @@ class EditPage extends Component {
           placement="left"
           closable={true}
           onClose={this.onCloseVersion}
-          visible={true}
-          // visible={this.state.visibleVersion}
+          visible={visibleVersion}
         >
           <Timeline pending="Recording...">
-            <Timeline.Item>
-              <Button block>2019-1-10</Button>
-            </Timeline.Item>
-            <Timeline.Item>
-              <Button block>2019-7-9</Button>
-            </Timeline.Item>
-            <Timeline.Item>
-              <Button block>2019-10-9</Button>
-            </Timeline.Item>
+            {version.map(v => (
+              <Timeline.Item style={{ alignItems: "center" }}>
+                <Button block style={{ width: "90%" }}>
+                  {v}
+                </Button>
+                <Icon
+                  type="delete"
+                  style={{
+                    verticalAlign: "center",
+                    display: "inline-block",
+                    textAlign: "right",
+                    width: "10%"
+                  }}
+                  onClick={e => this.handleClick(v)}
+                  key={v}
+                />
+              </Timeline.Item>
+            ))}
           </Timeline>
         </Drawer>
 
@@ -83,9 +119,8 @@ class EditPage extends Component {
           title="Tools Box"
           placement="left"
           closable={true}
-          onClose={this.onCloseVersion}
-          // visible={this.state.visible}
-          visible={false}
+          onClose={this.onCloseToolbox}
+          visible={visibleToolbox}
         >
           <Button
             block
@@ -139,7 +174,8 @@ class EditPage extends Component {
         </Drawer>
 
         <EditNavbar
-          value={(this.state.visibleVersion, this.state.visibleToolbox)}
+          handleVersionVisible={this.handleVersionVisible}
+          handleToolsVisible={this.handleToolsVisible}
         />
         <Row>
           <Col span={4} style={{ background: "#900", height: height }}>

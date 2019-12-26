@@ -2,10 +2,15 @@ import AppNavbar from "../common/appNavbar";
 import AppContent from "./appContent";
 
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 class DocumentsPage extends Component {
   state = { appNavbarWidth: "100%", appNavbarHeight: "10%" };
   render() {
+    console.log(this.props.userId);
+    if (this.props.userId === -1) {
+      return <Redirect to="/login" />;
+    }
     const { appNavbarWidth, appNavbarHeight } = this.state;
     return (
       <div>

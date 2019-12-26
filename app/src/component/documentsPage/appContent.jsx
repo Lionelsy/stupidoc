@@ -16,19 +16,16 @@ class AppContent extends Component {
 
   onChange = e => {
     this.setState({ selected: e.key });
-    if (e.key == 0) {
-      this.setState({ filtered_documents: [...this.state.documents] });
-    } else if (e.key == 1) {
+    let temp_docs = [...this.state.documents];
+    if (e.key === "1") {
+      this.setState({ filtered_documents: temp_docs });
+    } else if (e.key === "2") {
       this.setState({
-        filtered_documents: this.state.documents.filter(
-          doc => doc.authority == 0
-        )
+        filtered_documents: temp_docs.filter(doc => doc.authority === 0)
       });
-    } else if (e.key == 2) {
+    } else if (e.key === "3") {
       this.setState({
-        filtered_documents: this.state.documents.filter(
-          doc => doc.authority == 1
-        )
+        filtered_documents: temp_docs.filter(doc => doc.authority === 1)
       });
     }
   };

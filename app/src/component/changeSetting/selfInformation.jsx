@@ -35,7 +35,21 @@ class SelfInformation extends Component {
     });
   };
 
-  handleChangeName = e => {};
+  handleChangeName = e => {
+    let newName = this.refs.newName.state.value;
+    let data = { user_id: this.props.userId, user_name: newName };
+    if (!newName) {
+      alert("用户名不能为空");
+    } else {
+      fetch("/user/modifyUserPassword", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(res => res.json())
+        .then(data => console.log(data.msg));
+    }
+  };
   handleOk = e => {
     // var pre = this.refs.pre.input.value;
     var old1 = this.refs.old1.input.value;
@@ -63,13 +77,13 @@ class SelfInformation extends Component {
   };
 
   handleCancel = e => {
-    // console.log(pre);
     this.setState({
       visible: false
     });
   };
 
   render() {
+    console.log(this.props.userId);
     const {
       appNavbarWidth,
       appNavbarHeight,
@@ -146,10 +160,12 @@ class SelfInformation extends Component {
                         <span>昵称</span>
                       </Col>
                       <Col span={secondColSpan}>
-                        <Input placeholder="Lionel" />
+                        <Input placeholder="Lionel" ref="newName" />
                       </Col>
                       <Col span={thirdColSpan}>
-                        <Button type="link">更改</Button>
+                        <Button type="link" onClick={this.handleChangeName}>
+                          修改昵称
+                        </Button>
                       </Col>
                     </Row>
                     <Row style={{ margin: 10 }} type="flex" align="middle">
@@ -162,7 +178,7 @@ class SelfInformation extends Component {
                       </Col>
                       <Col span={thirdColSpan}>
                         <Button type="link" onClick={this.showModal}>
-                          更改
+                          修改密码
                         </Button>
                       </Col>
                     </Row>
@@ -172,7 +188,7 @@ class SelfInformation extends Component {
                         <span>账户ID</span>
                       </Col>
                       <Col span={secondColSpan}>
-                        <Text disabled>11712122</Text>
+                        <Text>{this.props.userId}</Text>
                       </Col>
                       <Col span={thirdColSpan}></Col>
                     </Row>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Menu, Icon } from "antd";
-import { Resizable, ResizableBox } from "Resizable";
 class EditNavbar extends Component {
   state = {};
 
@@ -15,7 +14,7 @@ class EditNavbar extends Component {
       >
         <Menu mode="horizontal">
           <Menu.Item key="option" style={{ width: "10%" }}>
-            <Button block>
+            <Button onClick={this.props.handleToolsVisible} block>
               <Icon type="unordered-list" />
               option
             </Button>
@@ -25,7 +24,11 @@ class EditNavbar extends Component {
               <Icon type="unordered-list" style={{ marginRight: 0 }} />
               <span>version</span>
             </Button> */}
-            <Button type="primary" icon="book">
+            <Button
+              type="primary"
+              icon="book"
+              onClick={this.props.handleVersionVisible}
+            >
               version
             </Button>
           </Menu.Item>

@@ -9,6 +9,8 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import "../node_modules/react-grid-layout/css/styles.css";
+import "../node_modules/react-resizable/css/styles.css";
 
 class App extends Component {
   state = {

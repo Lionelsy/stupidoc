@@ -66,7 +66,7 @@ class EditContent extends Component {
             left: "49.3%",
             bottom: 0,
             right: "50%",
-            width: "0.9%",
+            width: "1%",
             height: "100%",
             background: "#aa0",
             cursor: "e-resize"

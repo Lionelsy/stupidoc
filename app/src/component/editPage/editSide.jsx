@@ -9,10 +9,8 @@ class EditSide extends Component {
   };
 
   render() {
-    {
-      console.log(this.props.value);
-    }
-
+    console.log(this.props.value);
+    const { value } = this.props;
     return (
       <div
         style={{
@@ -34,18 +32,12 @@ class EditSide extends Component {
           theme="light"
           inlineCollapsed={this.props.collapsed}
         >
-          <Menu.Item key="1">
-            <Icon type="pie-chart" />
-            <span>Option 1</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Icon type="desktop" />
-            <span>Option 2</span>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Icon type="inbox" />
-            <span>Option 3</span>
-          </Menu.Item>
+          {value.map(e => (
+            <Menu.Item key={e.object_id}>
+              <Icon type="pie-chart" />
+              <span>{e.object_name}</span>
+            </Menu.Item>
+          ))}
         </Menu>
       </div>
     );

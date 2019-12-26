@@ -20,6 +20,22 @@ class EditCard extends Component {
       });
   };
 
+  handleConfirm = () => {
+    let doc = this.props.doc;
+    let title = this.refs.title.state.value;
+    let desc = this.refs.desc.state.value;
+    doc.document_title = title;
+    doc.description = desc;
+    this.setState({ showLoading: true });
+    fetch("/document/modifyDocInfo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(doc)
+    })
+      .then(res => res.json())
+      .then(window.location.reload());
+  };
+
   render() {
     const { showLoading } = this.state;
     return (
@@ -33,6 +49,7 @@ class EditCard extends Component {
           <Input
             style={{ marginTop: 30, background: this.state.backgroundColor }}
             defaultValue={this.props.doc.document_title}
+            ref="title"
           />
         </div>
         <div>
@@ -43,6 +60,7 @@ class EditCard extends Component {
               background: this.state.backgroundColor
             }}
             defaultValue={this.props.doc.description}
+            ref="desc"
           />
         </div>
         <div>

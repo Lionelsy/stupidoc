@@ -21,7 +21,6 @@ class EditPage extends Component {
     value: "<h1>Hello World</h1>",
     visibleVersion: false,
     visibleToolbox: false,
-    version: ["2019-1-1", "2019-7-9", "2019-10-9"],
     versions: [],
     objects: [],
     doc_id: 20
@@ -67,12 +66,6 @@ class EditPage extends Component {
     });
   };
 
-  handleVersionVisible = () => {
-    this.setState({
-      visibleVersion: true
-    });
-  };
-
   handleToolsVisible = () => {
     this.setState({
       visibleToolbox: true
@@ -80,9 +73,10 @@ class EditPage extends Component {
   };
 
   handleClick = e => {
-    var new_version = [...this.state.version];
-    new_version = new_version.filter(v => v != e);
-    this.setState({ version: new_version });
+    var new_versions = [...this.state.versions];
+    new_versions = new_versions.filter(v => v.version_id !== e);
+    this.setState({ versions: new_versions });
+    console.log(this.state.versions);
   };
 
   async componentDidMount() {
@@ -102,8 +96,25 @@ class EditPage extends Component {
     });
   }
 
+  handleGetVersion = () => {
+    this.setState({
+      visibleVersion: true
+    });
+    const doc_id = this.state.doc_id;
+    const res = fetch(
+      `/document/getVersionsDescription?document_id=` + parseInt(doc_id)
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          versions: data.data
+        });
+      });
+    console.log(this.state.versions);
+  };
+
   render() {
-    const { height, visibleVersion, visibleToolbox, version } = this.state;
+    const { height, visibleVersion, visibleToolbox, versions } = this.state;
     return (
       <div>
         <Drawer
@@ -114,10 +125,10 @@ class EditPage extends Component {
           visible={visibleVersion}
         >
           <Timeline pending="Recording...">
-            {version.map(v => (
+            {versions.map(v => (
               <Timeline.Item style={{ alignItems: "center" }}>
-                <Button block style={{ width: "90%" }}>
-                  {v}
+                <Button block style={{ width: "90%" }} key={v.version_id}>
+                  {v.version_description}
                 </Button>
                 <Icon
                   type="delete"
@@ -127,8 +138,8 @@ class EditPage extends Component {
                     textAlign: "right",
                     width: "10%"
                   }}
-                  onClick={e => this.handleClick(v)}
-                  key={v}
+                  onClick={e => this.handleClick(v.version_id)}
+                  key={v.version}
                 />
               </Timeline.Item>
             ))}
@@ -194,11 +205,11 @@ class EditPage extends Component {
         </Drawer>
 
         <EditNavbar
-          handleVersionVisible={this.handleVersionVisible}
+          handleGetVersion={this.handleGetVersion}
           handleToolsVisible={this.handleToolsVisible}
         />
         <Row>
-          <Col span={4} style={{ background: "#900", height: height }}>
+          <Col span={4} style={{ background: "#ffffff", height: height }}>
             <EditSide value={this.state.objects} />
           </Col>
           <Col span={20} style={{ background: "#090", height: height }}>

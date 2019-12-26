@@ -27,7 +27,7 @@ class EditNavbar extends Component {
             <Button
               type="primary"
               icon="book"
-              onClick={this.props.handleVersionVisible}
+              onClick={this.props.handleGetVersion}
             >
               version
             </Button>

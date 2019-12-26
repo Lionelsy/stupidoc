@@ -17,8 +17,8 @@ class EditContent extends Component {
     var sideWidth = maxWidth * 0.1667;
     var dragWidth = maxWidth * 0.006;
     var editor = this.refs.reactAceComponent.editor;
-    this.setState({ move: true });
     document.onmousemove = event => {
+      this.setState({ move: true });
       event.preventDefault();
       var x = event.pageX;
       if (x < maxWidth * 0.3 || x > maxWidth * 0.816) return;
@@ -125,8 +125,7 @@ class EditContent extends Component {
               id="pdf-viewer"
               style={{
                 width: "100%",
-                height: "100%",
-                pointerEvents: "none"
+                height: "100%"
               }}
               src={pdf_file}
               allowFullScreen={true}

@@ -12,6 +12,7 @@ import {
   Card,
   Modal
 } from "antd";
+import { Redirect } from "react-router-dom";
 
 const { TabPane } = Tabs;
 const { Text } = Typography;
@@ -38,6 +39,7 @@ class SelfInformation extends Component {
   handleChangeName = e => {
     let newName = this.refs.newName.state.value;
     let data = { user_id: this.props.userId, user_name: newName };
+    console.log(this.props.userId);
     if (!newName) {
       alert("用户名不能为空");
     } else {
@@ -51,7 +53,6 @@ class SelfInformation extends Component {
     }
   };
   handleOk = e => {
-    // var pre = this.refs.pre.input.value;
     var old1 = this.refs.old1.input.value;
     var old2 = this.refs.old2.input.value;
     if (old1 === old2) {
@@ -61,7 +62,6 @@ class SelfInformation extends Component {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          // user_id: parseInt(this.props.user_id),
           user_id: parseInt(12345678),
           user_password: old1
         })
@@ -83,7 +83,9 @@ class SelfInformation extends Component {
   };
 
   render() {
-    console.log(this.props.userId);
+    if (this.props.userId === -1) {
+      return <Redirect to="/login" />;
+    }
     const {
       appNavbarWidth,
       appNavbarHeight,

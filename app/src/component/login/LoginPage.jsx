@@ -26,7 +26,7 @@ class LoginPage extends Component {
           />
           <br />
           <br />
-          <Row style={{}}>
+          <Row>
             <Col span={8} offset={8}>
               <div style={{ textAlign: "center" }}>
                 <img

@@ -20,16 +20,9 @@ class AppNavbar extends Component {
             Stupidoc
           </a>
         </Menu.Item>
-        <SubMenu></SubMenu>
         <MenuItem style={{ width: this.state.menuItemWitdh, float: "right" }}>
           <UserOption />
         </MenuItem>
-        {/* <Menu.Item style={{ width: this.state.menuItemWitdh, float: "right" }}>
-          <Search
-            placeholder="Search Files"
-            onSearch={value => console.log(value)}
-          />
-        </Menu.Item> */}
       </Menu>
     );
   }

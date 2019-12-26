@@ -51,6 +51,7 @@ class AppContent extends Component {
     if (isLoading) {
       return <h2>Loading...</h2>;
     }
+    console.log(documents);
     return (
       <Row>
         <Col span={3}>
@@ -78,6 +79,7 @@ class AppContent extends Component {
               documents={filtered_documents}
               selected={selected}
               document_id={this.props.document_id}
+              document_type={this.props.document_type}
               handleDocumentSelect={this.props.handleDocumentSelect}
             />
           </div>

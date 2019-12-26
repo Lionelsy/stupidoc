@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 
 import pdf_file from "./main.pdf";
 class EditContent extends Component {
-  state = { move: false };
+  state = { move: false, document_type: 0 };
   onMouseDown = e => {
     var target = e.target;
     var edit = document.getElementById("edit");
@@ -33,23 +33,19 @@ class EditContent extends Component {
     };
   };
 
-  componentDidMount = () => {
-    this.fullScreen();
-  };
-
   onChange = newValue => {
     console.log(newValue);
   };
 
   fullScreen = () => {
     document.getElementById("pdf-viewer").addEventListener("click", function() {
-      var docElm = document.documentElement; //W3C
+      var docElm = document.documentElement;
       if (docElm.requestFullscreen) {
         docElm.requestFullscreen();
       } //FireFox
       else if (docElm.mozRequestFullScreen) {
         docElm.mozRequestFullScreen();
-      } //Chrome等
+      } //Chrome
       else if (docElm.webkitRequestFullScreen) {
         docElm.webkitRequestFullScreen();
       } //IE11
@@ -59,6 +55,9 @@ class EditContent extends Component {
     });
   };
   render() {
+    console.log(this.props.userId);
+    console.log(this.props.document_id);
+    console.log(this.props.document_type);
     return (
       <div style={{ position: "relative", height: window.innerHeight * 0.9 }}>
         <div
@@ -90,7 +89,7 @@ class EditContent extends Component {
             left: "49.3%",
             bottom: 0,
             right: "50%",
-            width: "1%",
+            width: "0.75%",
             height: "100%",
             background: "#e7e7e7",
             cursor: "e-resize"
@@ -109,16 +108,20 @@ class EditContent extends Component {
           }}
         >
           <Button
-            type="primary"
-            shape="round"
+            type="ghost"
             icon="tool"
-            style={{ marginLeft: "5%", height: "5%" }}
+            style={{
+              marginLeft: "5%",
+              height: "5%"
+            }}
           >
-            Compile
+            {this.state.document_type === 0 ? "Save" : "Compile"}
           </Button>
           <br />
           {this.state.move ? (
             <div></div>
+          ) : this.props.document_type === 0 ? (
+            <ReactMarkdown source={this.props.value} escapeHtml={false} />
           ) : (
             <iframe
               title="showPanel"
@@ -132,7 +135,6 @@ class EditContent extends Component {
               frameBorder="0"
             />
           )}
-          {/* <ReactMarkdown source={this.props.value} escapeHtml={false} /> */}
         </div>
       </div>
     );

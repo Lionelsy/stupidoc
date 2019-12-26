@@ -9,21 +9,22 @@ import "./component/utils/storageUtils";
 class App extends Component {
   state = {
     username: "",
-    userId: 12345678, //等正式发布时设置成-1
+    userId: -1, //等正式发布时设置成-1
     login: false,
-    document_id: 1
+    document_id: 1,
+    document_type: 0
   };
 
   handleLogin = (userId, username) => {
     this.setState({ userId, username });
   };
 
-  handleDocumentSelect = document_id => {
-    this.setState({ document_id });
+  handleDocumentSelect = (document_id, document_type) => {
+    this.setState({ document_id, document_type });
   };
 
   render() {
-    const { userId, document_id } = this.state;
+    const { userId, document_id, document_type } = this.state;
     return (
       <Router>
         <Switch>
@@ -31,7 +32,11 @@ class App extends Component {
             <LoginPage handleLogin={this.handleLogin} userId={userId} />
           </Route>
           <Route path="/edit">
-            <EditPage userId={userId} />
+            <EditPage
+              userId={userId}
+              document_id={document_id}
+              document_type={document_type}
+            />
           </Route>
           <Route path="/info">
             <SelfInformation userId={userId} />
@@ -40,6 +45,7 @@ class App extends Component {
             <DocumentsPage
               userId={userId}
               document_id={document_id}
+              document_type={document_type}
               handleDocumentSelect={this.handleDocumentSelect}
             />
           </Route>

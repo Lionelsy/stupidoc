@@ -1,10 +1,23 @@
 import { Form, Icon, Input, Button } from "antd";
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { notification } from "antd";
 
 class NormalLoginForm extends Component {
   state = {
     login: 1
+  };
+  onWarning = () => {
+    notification["warning"]({
+      message: "Warning",
+      description: "You Have Already Logged In !"
+    });
+  };
+  onError = () => {
+    notification["error"]({
+      message: "error",
+      description: "Your Password Is Wrong !"
+    });
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -26,6 +39,10 @@ class NormalLoginForm extends Component {
           .then(data => {
             if (data.code === 0) {
               this.props.handleLogin(data.data.user_id, data.data.user_name);
+            } else if (data.code === 2) {
+              this.onWarning();
+            } else {
+              this.onError();
             }
             this.setState({ login: data.code });
           });

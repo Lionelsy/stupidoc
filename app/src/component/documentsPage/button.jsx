@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Upload } from "antd";
+import { Row, Upload, Button } from "antd";
 import NewBotton from "./newBotton";
 
 class AllButton extends Component {
@@ -16,7 +16,11 @@ class AllButton extends Component {
         }}
       >
         <Row type="flex" justify="space-around" align="top">
-          <Upload width={appButtonWidth} style={{ textAlign: "center" }} />
+          <Upload width={appButtonWidth} style={{ textAlign: "center" }}>
+            <Button style={{ textAlign: "center", width: appButtonWidth }}>
+              Upload
+            </Button>
+          </Upload>
         </Row>
         <br />
         <Row type="flex" justify="space-around" align="top">

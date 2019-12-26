@@ -9,11 +9,13 @@ import {
   Button,
   Divider,
   Select,
-  Icon
+  Icon,
+  Modal
 } from "antd";
 import EditContent from "./editContent";
 
 const { Option } = Select;
+
 class EditPage extends Component {
   state = {
     collapsed: false,
@@ -21,9 +23,14 @@ class EditPage extends Component {
     value: "<h1>Hello World</h1>",
     visibleVersion: false,
     visibleToolbox: false,
+    visibleDetail: false,
+    document_title: "",
     versions: [],
     objects: [],
-    doc_id: 20
+    doc_id: 20,
+    version_detail: [],
+    oldVersionInfo: {},
+    oldVersionFiles: []
   };
 
   toggleCollapsed = () => {
@@ -73,6 +80,7 @@ class EditPage extends Component {
   };
 
   handleClick = e => {
+    fetch(`/document/deleteVersion?version_id=` + parseInt(e));
     var new_versions = [...this.state.versions];
     new_versions = new_versions.filter(v => v.version_id !== e);
     this.setState({ versions: new_versions });
@@ -109,17 +117,90 @@ class EditPage extends Component {
       });
   };
 
+  handleGettargetVersion = e => {
+    let doc_id = this.state.doc_id;
+    fetch(
+      `/document/rollback?document_id=` +
+        parseInt(doc_id) +
+        "&" +
+        "version_id=" +
+        e
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
+  };
+
+  handleOk = e => {
+    this.setState({
+      visibleDetail: false
+    });
+  };
+
+  handleCancel = e => {
+    this.setState({
+      visibleDetail: false
+    });
+  };
+
+  showModal = e => {
+    fetch(`/document/getVersionInfo?version_id=` + e)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          oldVersionInfo: data.data
+        });
+      });
+    fetch(`/document/getObjectsDescription?version_id=` + e)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          oldVersionFiles: data.data
+        });
+      });
+    this.setState({
+      visibleDetail: true
+    });
+  };
+
+  getTime = e => {
+    let date = new Date(e);
+    return (
+      date.getFullYear() + "年" + date.getMonth() + "月" + date.getDay() + "日"
+    );
+  };
   render() {
     const {
       height,
       visibleVersion,
       visibleToolbox,
       versions,
-      objects,
-      value
+      oldVersionInfo,
+      oldVersionFiles,
+      document_title
     } = this.state;
+
+    console.log(this.props.userId);
+
     return (
       <div>
+        <Modal
+          title={document_title}
+          visible={this.state.visibleDetail}
+          handleOk={this.handleGettargetVersion(oldVersionInfo.version_id)}
+          // onOk={e => this.handleGettargetVersion(oldVersionInfo.version_id)}
+          okText="Roll Back"
+          onCancel={this.handleCancel}
+        >
+          <h2>{oldVersionInfo.content_source}</h2>
+          <Divider dashed />
+          <h2>{this.getTime(oldVersionInfo.last_modified)}</h2>
+          <Divider dashed />
+          {oldVersionFiles.map(e => (
+            <h3>{e.object_name}</h3>
+          ))}
+        </Modal>
         <Drawer
           title="Version Box"
           placement="left"
@@ -127,11 +208,16 @@ class EditPage extends Component {
           onClose={this.onCloseVersion}
           visible={visibleVersion}
         >
-          <Timeline pending="Recording...">
+          <Timeline pending="Loading...">
             {versions.map(v => (
               <Timeline.Item style={{ alignItems: "center" }}>
-                <Button block style={{ width: "90%" }} key={v.version_id}>
-                  {v.version_description}
+                <Button
+                  block
+                  style={{ width: "90%" }}
+                  key={v.version_id}
+                  onClick={e => this.showModal(v.version_id)}
+                >
+                  {v.version_id}
                 </Button>
                 <Icon
                   type="delete"
@@ -213,13 +299,17 @@ class EditPage extends Component {
         />
         <Row>
           <Col span={4} style={{ background: "#ffffff", height: height }}>
-            <EditSide value={objects} />
+            <EditSide value={this.state.objects} />
           </Col>
           <Col span={20} style={{ background: "#090", height: height }}>
             <EditContent
-              value={value}
+              value={this.state.value}
               onValueChange={this.onValueChange}
               height={height}
+              doc_id={this.state.doc_id}
+              document_id={this.props.document_id}
+              document_type={this.props.document_type}
+              userId={this.props.userId}
             />
           </Col>
         </Row>

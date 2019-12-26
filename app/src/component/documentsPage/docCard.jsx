@@ -26,6 +26,7 @@ class DocCard extends Component {
     documents: this.props.documents,
     appButtonWidth: "150px",
     document_id: this.props.document_id,
+    // document_type:
     selectedDoc: this.props.documents[0],
     visible: false,
     clicked: false,
@@ -165,7 +166,10 @@ class DocCard extends Component {
                           <Link
                             to="/edit"
                             onClick={e =>
-                              this.props.handleDocumentSelect(doc.document_id)
+                              this.props.handleDocumentSelect(
+                                doc.document_id,
+                                doc.document_type
+                              )
                             }
                           >
                             <Icon type="edit" key="edit" />
@@ -183,10 +187,7 @@ class DocCard extends Component {
                           />
                         ]}
                       >
-                        <Meta
-                          title={doc.document_title}
-                          // description="This is the description"
-                        />
+                        <Meta title={doc.document_title} />
                         <div style={{ marginTop: 12 }}>
                           <Input
                             style={{ border: 0 }}
@@ -211,7 +212,8 @@ class DocCard extends Component {
           visible={this.state.visible}
         >
           <EditCard
-            docid={this.state.document_id}
+            docid={this.props.document_id}
+            document_type={this.props.document_type}
             doc={this.state.selectedDoc}
           />
         </Drawer>

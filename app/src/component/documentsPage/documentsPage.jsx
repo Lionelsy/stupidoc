@@ -7,7 +7,6 @@ import { Redirect } from "react-router-dom";
 class DocumentsPage extends Component {
   state = { appNavbarWidth: "100%", appNavbarHeight: "10%" };
   render() {
-    console.log(this.props.userId);
     if (this.props.userId === -1) {
       return <Redirect to="/login" />;
     }
@@ -27,6 +26,7 @@ class DocumentsPage extends Component {
         <div>
           <AppContent
             document_id={this.props.document_id}
+            document_type={this.props.document_type}
             handleDocumentSelect={this.props.handleDocumentSelect}
           />
         </div>
